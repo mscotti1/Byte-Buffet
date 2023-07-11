@@ -1,4 +1,93 @@
-<button>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Container with Rows and Levels</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        margin-top: 50px;
+      }
+
+      .level-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .level-container .level {
+        flex-basis: 30%;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .level {
+        color: black; /* Change the color to your desired value */
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-container">
+            <h1 class="text-center">Select Your Recipe</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="level-container">
+            <a href="recipes/alfredo/home.html" class="level">
+              <h3>Chicken Alfredo</h3>
+              <p>recipe desc</p>
+            </a>
+            <a href="recipes/cheese/home.html" class="level">
+              <h3>Grilled Cheese</h3>
+              <p>recipe desc</p>
+            </a>
+            <a href="recipes/squid/home.html" class="level">
+              <h3>Squid Tempura</h3>
+              <p>recipe desc</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="level-container">
+            <a href="recipes/pancakes/home.html" class="level">
+              <h3>Pancakes</h3>
+              <p>recipe desc</p>
+            </a>
+            <a href="recipes/beef/home.html" class="level">
+              <h3>Beef</h3>
+              <p>recipe desc</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- <button>
     <a href= "recipes/alfredo/home.html"> alfredo </a>
 </button>
 
@@ -16,4 +105,4 @@
 
 <button>
 <a href= "recipes/pancakes/home.html"> pancakes </a>
-</button>
+</button> -->
