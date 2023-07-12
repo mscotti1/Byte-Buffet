@@ -33,6 +33,10 @@ def home():
 def select():
     return render_template("recipe_select.html")
 
+@app.route("/game")
+def game():
+    return render_template("game.html")
+
 @app.route("/alfredo/home")
 def alfredo_home():
     return render_template("alfredo/home.html")
