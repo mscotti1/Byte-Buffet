@@ -3,8 +3,11 @@
 <head>
     <title> Byte Buffet: Chicken Alfredo </title>
 <style>
-    body {
-      cursor: url("../../static/64cat.png"), auto;
+    .custom-cursor {
+    cursor: url("../../static/64cat.png"), auto;
+  }
+    .custom-cursor.clicked {
+      cursor: url("../../static/64knife.png"), auto;
     }
     canvas {
       border: 2px solid red;
@@ -13,7 +16,7 @@
 </head>
 
 <body>
-    <canvas id="rect" width="200" height="200"></canvas>
+    <canvas id="rect" class="custom-cursor"width="200" height="200"></canvas>
 
     <script>
         // Get the canvas element
@@ -34,7 +37,8 @@
             // Check if the click was inside the rectangle
             if (x >= 50 && x <= 150 && y >= 50 && y <= 150) {
                 // Display an alert
-                alert("Rectangle has been clicked!");
+                canvas.classList.toggle('clicked');
+                <!-- alert("Rectangle has been clicked!"); -->
             }
         });
     </script>
