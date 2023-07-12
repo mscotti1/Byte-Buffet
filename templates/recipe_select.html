@@ -83,19 +83,19 @@
       <div class="row">
         <div class="col-md-12">
           <div class="level-container">
-            <a href="/alfredo/home" class="level">
+            <a href="./{{url_for('alfredo_home')}}" class="level">
               <h3>Chicken Alfredo</h3>
              <img src="{{url_for('static', filename='chicken.png')}}" alt="Image Description" width="300" height="200"/>
               <p>recipe desc</p>
             </a>
-            <a href="/cheese/home" class="level">
+            <a href="./{{url_for('cheese_home')}}" class="level">
               <h3>Grilled Cheese</h3>
-              <img src="../static/cheese.png" alt="Image Description" width="300" height="200">
+              <img src="{{url_for('static', filename='cheese.png')}}" alt="Image Description" width="300" height="200">
               <p>recipe desc</p>
             </a>
-            <a href="/squid/home" class="level">
+            <a href="./{{url_for('squid_home')}}" class="level">
               <h3>Fried Calamari</h3>
-              <img src="../static/Calamari.jpg" alt="Image Description" width="300" height="200">
+              <img src="{{url_for('static', filename='Calamari.jpg')}}" alt="Image Description" width="300" height="200">
               <p>recipe desc</p>
             </a>
           </div>
@@ -104,14 +104,14 @@
       <div class="row">
         <div class="col-md-12">
           <div class="level-container">
-            <a href="/pancakes/home" class="level">
+            <a href="./{{url_for('pancakes_home')}}" class="level">
               <h3>Pancakes</h3>
-              <img src="../static/pancake.png" alt="Image Description" width="300" height="200">
+              <img src="{{url_for('static', filename='pancake.png')}}" alt="Image Description" width="300" height="200">
               <p>recipe desc</p>
             </a>
-            <a href="/beef/home" class="level">
+            <a href="./{{url_for('beef_home')}}" class="level">
               <h3>Beef Stir Fry</h3>
-              <img src="../static/beef.png" alt="Image Description" width="300" height="200">
+              <img src="{{url_for('static', filename='beef.png')}}" alt="Image Description" width="300" height="200">
               <p>recipe desc</p>
             </a>
           </div>
