@@ -37,6 +37,10 @@ def select():
 def game():
     return render_template("game.html")
 
+@app.route("/chop_game_template.html")
+def game2():
+    return render_template("game.html")
+
 @app.route("/alfredo/home")
 def alfredo_home():
     return render_template("alfredo/home.html")
