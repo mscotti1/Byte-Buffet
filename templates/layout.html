@@ -50,22 +50,13 @@
   <div class="highscores">
     <h2 align="right"> Highscores: </h2>
     <table>
-      <tr>
-        <td>1. NAME</td>
-      </tr>
-      <tr>
-        <td>2. NAME</td>
-      </tr>
-      <tr>
-        <td>3. NAME</td>
-      </tr>
-      <tr>
-        <td>4. NAME</td>
-      </tr>
-      <tr>
-        <td>5. NAME</td>
-      </tr>
-    </table>
+ 		{% for i in rows %}
+          <tr>
+              <td> {{i[0]}} </td>
+              <td> {{i[1]}} </td>
+          </tr>
+          {% endfor %}
+        </table>
   </div>
 
     {% block content %}{% endblock %}
