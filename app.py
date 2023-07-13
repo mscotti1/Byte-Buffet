@@ -179,10 +179,10 @@ def pancakes_chop():
 def squid_chop():
     return render_template("squid/chop.html")
 
-@app.route("/cheese/serve")
-def cheese_serve():
-    return render_template("cheese/serve.html")
-
+# @app.route("/cheese/serve")
+# def cheese_serve():
+#     return render_template("cheese/serve.html")
+#
 
 @app.route("/pancakes/mix")
 def pancakes_mix():
