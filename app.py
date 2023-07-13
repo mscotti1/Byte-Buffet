@@ -204,18 +204,6 @@ def alfredo_mix():
 def cheese_mix():
     return render_template("cheese/mix.html")
 
-# @app.route("/pancakes/serve")
-# def panacakes_serve():
-#     with engine.connect() as connection:
-#         # SELECT * FROM score_table
-#         # print(db.select(score_table).order_by(score_table.c.Score.desc()))
-#         query = db.select(score_table_pancakes).order_by(score_table_pancakes.c.Score.desc())
-#         print("Q: ", query)
-#         query_result = connection.execute(query)
-#         rows = query_result.fetchall()
-#         print("ROWS: ", rows)
-#     return render_template("pancakes/serve.html", rows=rows)
-
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port = 8000)
