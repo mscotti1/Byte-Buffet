@@ -6,7 +6,19 @@ engine = db.create_engine('sqlite:///highscores.db')
 # tracks all tables
 metadata = db.MetaData()
 # schema of table
-score_table = db.Table("Highscores", metadata,
+score_table_pancakes = db.Table("Highscores_pancakes", metadata,
+                db.Column("Name", db.String(20)),
+                db.Column("Score", db.Integer))
+score_table_cheese = db.Table("Highscores_cheese", metadata,
+                db.Column("Name", db.String(20)),
+                db.Column("Score", db.Integer))
+score_table_squid = db.Table("Highscores_squid", metadata,
+                db.Column("Name", db.String(20)),
+                db.Column("Score", db.Integer))
+score_table_beef = db.Table("Highscores_beef", metadata,
+                db.Column("Name", db.String(20)),
+                db.Column("Score", db.Integer))
+score_table_alfredo = db.Table("Highscores_alfredo", metadata,
                 db.Column("Name", db.String(20)),
                 db.Column("Score", db.Integer))
 # creates all tables associated with metadata
@@ -21,7 +33,7 @@ def update_score():
     "Score" : 0
     }
     with engine.connect() as connection:
-        connection.execute(score_table.insert(), score_dict)
+        connection.execute(score_table_squid.insert(), score_dict)
         connection.commit()
     return "make sure to change to POST"
 
@@ -34,44 +46,89 @@ def select():
     return render_template("recipe_select.html")
 
 @app.route("/game")
-def game():
+def game0():
     return render_template("game.html")
 
-@app.route("/chop_game_template.html")
+@app.route("/stack")
+def game1():
+    return render_template("stack.html")
+
+@app.route("/chop_game")
 def game2():
-    return render_template("game.html")
+    return render_template("chop_game.html")
+
+@app.route("/pan_game")
+def game3():
+    return render_template("pan_game.html")
+
+@app.route("/mix_game")
+def game4():
+    return render_template("pan_mix.html")
+
 
 @app.route("/alfredo/home")
 def alfredo_home():
-    return render_template("alfredo/home.html")
+    with engine.connect() as connection:
+        # SELECT * FROM score_table
+        # print(db.select(score_table).order_by(score_table.c.Score.desc()))
+        query = db.select(score_table_alfredo).order_by(score_table_alfredo.c.Score.desc())
+        print("Q: ", query)
+        query_result = connection.execute(query)
+        rows = query_result.fetchall()
+        print("ROWS: ", rows)
+
+    return render_template("alfredo/home.html", rows = rows)
 
 @app.route("/beef/home")
 def beef_home():
-    return render_template("beef/home.html")
+    with engine.connect() as connection:
+        # SELECT * FROM score_table
+        # print(db.select(score_table).order_by(score_table.c.Score.desc()))
+        query = db.select(score_table_beef).order_by(score_table_beef.c.Score.desc())
+        print("Q: ", query)
+        query_result = connection.execute(query)
+        rows = query_result.fetchall()
+        print("ROWS: ", rows)
+
+    return render_template("beef/home.html", rows = rows)
 
 @app.route("/cheese/home")
 def cheese_home():
-    return render_template("cheese/home.html")
+    with engine.connect() as connection:
+        # SELECT * FROM score_table
+        # print(db.select(score_table).order_by(score_table.c.Score.desc()))
+        query = db.select(score_table_cheese).order_by(score_table_cheese.c.Score.desc())
+        print("Q: ", query)
+        query_result = connection.execute(query)
+        rows = query_result.fetchall()
+        print("ROWS: ", rows)
+    return render_template("cheese/home.html", rows = rows)
 
 @app.route("/pancakes/home")
 def pancakes_home():
     with engine.connect() as connection:
         # SELECT * FROM score_table
         # print(db.select(score_table).order_by(score_table.c.Score.desc()))
-        query = db.select(score_table).order_by(score_table.c.Score.desc())
-        print(query)
+        query = db.select(score_table_pancakes).order_by(score_table_pancakes.c.Score.desc())
+        print("Q: ", query)
         query_result = connection.execute(query)
         rows = query_result.fetchall()
-        query_all = db.select(score_table)
-        query_all_res = connection.execute(query_all)
-        all_rows = query_all_res.fetchall()
         print("ROWS: ", rows)
-        print("ALL ROWS: ", all_rows)
-    return render_template("pancakes/home.html")
+
+    return render_template("pancakes/home.html", rows = rows)
 
 @app.route("/squid/home")
 def squid_home():
-    return render_template("squid/home.html")
+    with engine.connect() as connection:
+        # SELECT * FROM score_table
+        # print(db.select(score_table).order_by(score_table.c.Score.desc()))
+        query = db.select(score_table_squid).order_by(score_table_squid.c.Score.desc())
+        print("Q: ", query)
+        query_result = connection.execute(query)
+        rows = query_result.fetchall()
+        print("ROWS: ", rows)
+
+    return render_template("squid/home.html", rows = rows)
 
 @app.route("/alfredo/chop")
 def alfredo_chop():
