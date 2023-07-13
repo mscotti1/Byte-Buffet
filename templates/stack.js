@@ -27,44 +27,12 @@ let current_shape_index = null;
 let is_dragging = false
 let startX;
 let startY;
-// shapes.push( {x:200, y:50, width:100, height:100, color: 'red'})
-// shapes.push( {x:50, y:25, width:100, height:100, color: 'blue'})
+shapes.push( {x:200, y:150, width:100, height:100, color: 'red'})
+shapes.push( {x:200, y:300, width:100, height:100, color: 'blue'})
+shapes.push( {x:200, y:450, width:100, height:100, color: 'red'})
+shapes.push( {x:200, y:600, width:100, height:100, color: 'blue'})
 
 
-cut_boxes = {}
-cut_boxes_size = 0;
-
-hit_box = function(id,x,y,width,height) {
-
-    var self = {
-		id:id,
-		x:x,
-		y:y,
-		width:width,
-		height:height,
-		color:"red",
-	};
-
-    cut_boxes[id] = self;
-
-}
-
-generate_hit_boxes = function() {
-
-    
-
-    hit_box(997,300,400,25,25);
-    hit_box(996,300,425,25,25);
-    hit_box(995,300,450,25,25);
-    hit_box(994,300,475,25,25);
-    hit_box(993,300,500,25,25);
-    hit_box(992,300,525,25,25);
-    
-    cut_boxes_size = 6;
-
-}
-
-generate_hit_boxes();
 
 cutting_list = {}
 sliceNum = 0;
@@ -91,11 +59,13 @@ move_cutting_object = function() {
 
 
 generate_cutting_object = function() {
-    cutting_object(990,200,450,150,50);
+    cutting_object(990,400,325,200,200);
 }
 
 generate_cutting_object();
-console.log(cutting_list)
+
+
+
 
 let is_mouse_in_shape = function(x,y,shape) {
     let shape_left = shape.x
@@ -110,27 +80,19 @@ let is_mouse_in_shape = function(x,y,shape) {
     return false;
 }
 
-
 let mouse_down = function(event) {
     event.preventDefault();
     console.log(event)
     startX = parseInt(event.clientX - offset_x)
     startY = parseInt(event.clientY - offset_y)
-    remove = false;
 
     let index = 0
-    for (var key in cut_boxes) {
-        console.log(remove)
-        var shape = cut_boxes[key]
-        del = false;
+    for (let shape of shapes) {
         if (is_mouse_in_shape(startX,startY, shape)) {
             current_shape_index = index;
             is_dragging = true;
-            del = true;
-        }
-        if (del) {
-            console.log("here")
-            delete cut_boxes[key];
+            return;
+
         }
         index++;
     }
@@ -156,48 +118,25 @@ let mouse_out = function(event) {
 }
 
 let mouse_move = function(event) {
-    event.preventDefault();
-    //console.log(event)
-    startX = parseInt(event.clientX - offset_x)
-    startY = parseInt(event.clientY - offset_y)
-    remove = false;
-
-    let index = 0
-    for (var key in cut_boxes) {
-        //console.log(remove)
-        var shape = cut_boxes[key]
-        del = false;
-        if (is_mouse_in_shape(startX,startY, shape)) {
-            current_shape_index = index;
-            is_dragging = true;
-            del = true;
-        }
-        if (del) {
-            console.log("here")
-            cut_boxes_size--;
-            delete cut_boxes[key];
-        }
-        index++;
-    }
     if (!is_dragging) {
         return
     }
     else {
         event.preventDefault();
-        // let mouseX = parseInt(event.clientX - offset_x)
-        // let mouseY = parseInt(event.clientY - offset_y)
+        let mouseX = parseInt(event.clientX - offset_x)
+        let mouseY = parseInt(event.clientY - offset_y)
 
-        // let dx = mouseX - startX;
-        // let dy = mouseY - startY;
+        let dx = mouseX - startX;
+        let dy = mouseY - startY;
 
-        // let current_shape = shapes[current_shape_index];
-        // current_shape.x += dx;
-        // current_shape.y += dy;
+        let current_shape = shapes[current_shape_index];
+        current_shape.x += dx;
+        current_shape.y += dy;
 
-        // draw_shapes();
+        draw_shapes();
 
-        // startX = mouseX;
-        // startY = mouseY;
+        startX = mouseX;
+        startY = mouseY;
     }
 }
 
@@ -212,36 +151,20 @@ canvas.onmousemove = mouse_move;
 
 let draw_shapes = function() {
     context.clearRect(0,0, canvas_width, canvas_height);
-    // for (let shape of shapes) {
-    //     context.fillStyle = shape.color;
-    //     context.fillRect(shape.x, shape.y, shape.width, shape.height)
-    // }
 
-    for (var key in cutting_list) {
+    for(var key in cutting_list) {
         var shape = cutting_list[key]
-        //console.log(shape)
         context.fillStyle = shape.color;
         context.fillRect(shape.x, shape.y, shape.width, shape.height)
     }
 
-    for (var key in cut_boxes) {
-        var shape = cut_boxes[key]
+    for (let shape of shapes) {
         context.fillStyle = shape.color;
         context.fillRect(shape.x, shape.y, shape.width, shape.height)
     }
-
-    console.log(cut_boxes_size)
-    if(cut_boxes_size == 0) {
-        sliceNum++;
-        move_cutting_object(sliceNum);
-        cut_boxes_size = -1;
-    }
 }
 
-let new_chop = function() {
-    generate_hit_boxes();
-}
+draw_shapes();
 
 
-setInterval(draw_shapes,40);
-setInterval(new_chop,3000);
+setInterval(draw_shapes, 40)
