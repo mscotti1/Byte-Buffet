@@ -46,12 +46,21 @@ def select():
     return render_template("recipe_select.html")
 
 @app.route("/game")
-def game():
+def game0():
     return render_template("game.html")
 
-@app.route("/chop_game_template.html")
+@app.route("/stack")
+def game1():
+    return render_template("stack.html")
+
+@app.route("/chop_game")
 def game2():
-    return render_template("game.html")
+    return render_template("chop_game.html")
+
+@app.route("/pan_game")
+def game3():
+    return render_template("pan_game.html")
+
 
 @app.route("/alfredo/home")
 def alfredo_home():
