@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Byte Buffet: Pancakes </title>
+  <style>
+    body {
+      background-color: #8CC0DE;
+    }
+
+    td {
+      border: 1px solid #F4BFBF;
+      padding: 5px;
+    }
+
+    tr {
+      background-color: #FAF0D7;
+      color: black;
+    }
+
+    .block:hover{
+        background-color: #B2D3C2;
+        color: black;
+    }
+    .highscores {
+      float: left;
+      margin-right: 20px;
+    }
+    .block-left {
+        position: fixed;
+        left: 10%;
+        bottom: 60px;
+        width: 25%;
+        border-radius: 25px;
+        background-color: #F4BFBF;
+        margin: 20px;
+        padding: 14px 28px;
+        font-size: 25px;
+        cursor: pointer;
+        text-align: center;
+
+    }
+    .block-right{
+        position: fixed;
+        left: 60%;
+        bottom: 60px;
+        width: 25%;
+        border-radius: 25px;
+        background-color: #F4BFBF;
+        /* box-shadow: 5px 5px 5px lightblue; */
+        margin: 20px;
+        padding: 14px 28px;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    .block:hover{
+        background-color: #B2D3C2;
+        color: black;
+    }
+    .score {
+        margin-top: 100px;
+        text-align: center;
+    }
+    .plate {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .robot {
+        margin-top: 150px;
+        margin-right: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+  </style>
+</head>
+
+<body>
+    <a href="../recipe_select">
+        <button class="block-left">
+            New Recipe
+        </button>
+    </a>
+    <a href="home">
+        <button class="block-right">
+            Retry
+        </button>
+    </a>
+
+    <div class="highscores">
+      <h2 align="right"> Highscores: </h2>
+      <table>
+   		{% for i in rows %}
+            <tr>
+                <td> {{i[0]}} </td>
+                <td> {{i[1]}} </td>
+            </tr>
+            {% endfor %}
+          </table>
+    </div>
+  <div class="score">
+      <h1> Score: 8000 </h2>
+      </div>
+      <div class = "plate">
+          <img src="{{url_for('static', filename='pancake.png')}}" alt="Plate" width="300" height="200">
+        </div>
+    <div class = "robot">
+      <img src = "{{url_for('static', filename='happy_robot.png')}}" alt="Byter the Robot" width="300" height="200">
+      </div>
+</body>
+</html>

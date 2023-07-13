@@ -1,5 +1,5 @@
 import sqlalchemy as db
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 
 # creates database if it does not already exist
 engine = db.create_engine('sqlite:///highscores.db')
@@ -25,6 +25,44 @@ score_table_alfredo = db.Table("Highscores_alfredo", metadata,
 metadata.create_all(engine)
 
 app = Flask(__name__)
+
+@app.route("/<recipe>/serve", methods = ["GET","POST"])
+def insert_score(recipe):
+    table_name = ""
+
+    if recipe == "beef":
+        table_name = score_table_beef
+    elif recipe == "squid":
+        table_name = score_table_squid
+    elif recipe == "cheese":
+        table_name = score_table_cheese
+    elif recipe == "alfredo":
+        table_name = score_table_alfredo
+    elif recipe == "pancakes":
+        table_name = score_table_pancakes
+
+    if request.method == "POST":
+        name = request.form.get('name')
+        # score = request.form.get('score')
+        scores = {
+        "Name" : name,
+        "Score" : 8000
+        }
+        with engine.connect() as connection:
+            connection.execute(table_name.insert(), scores)
+            connection.commit()
+        return jsonify(scores)
+    # account for url when recipe is invalid
+
+    with engine.connect() as connection:
+        query = db.select(table_name).order_by(table_name.c.Score.desc())
+        print("Q: ", query)
+        query_result = connection.execute(query)
+        rows = query_result.fetchall()
+        print("ROWS: ", rows)
+
+    temp = f"{recipe}/serve.html"
+    return render_template(temp, rows=rows)
 
 @app.route("/update_score", methods = ["GET"])
 def update_score():
@@ -150,17 +188,20 @@ def pancakes_chop():
 def squid_chop():
     return render_template("squid/chop.html")
 
-@app.route("/pancakes/serve")
-def panacakes_serve():
-    with engine.connect() as connection:
-        # SELECT * FROM score_table
-        # print(db.select(score_table).order_by(score_table.c.Score.desc()))
-        query = db.select(score_table_pancakes).order_by(score_table_pancakes.c.Score.desc())
-        print("Q: ", query)
-        query_result = connection.execute(query)
-        rows = query_result.fetchall()
-        print("ROWS: ", rows)
-    return render_template("pancakes/serve.html", rows=rows)
+@app.route("/pancakes/mix")
+def pancakes_mix():
+    return render_template("pancakes/mix.html")
+# @app.route("/pancakes/serve")
+# def panacakes_serve():
+#     with engine.connect() as connection:
+#         # SELECT * FROM score_table
+#         # print(db.select(score_table).order_by(score_table.c.Score.desc()))
+#         query = db.select(score_table_pancakes).order_by(score_table_pancakes.c.Score.desc())
+#         print("Q: ", query)
+#         query_result = connection.execute(query)
+#         rows = query_result.fetchall()
+#         print("ROWS: ", rows)
+#     return render_template("pancakes/serve.html", rows=rows)
 
 
 if __name__ == '__main__':

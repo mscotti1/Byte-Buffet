@@ -89,7 +89,7 @@
 
     <div class="highscores">
       <h2 align="right"> Highscores: </h2>
-      <table>
+      <table id="best">
    		{% for i in rows %}
             <tr>
                 <td> {{i[0]}} </td>
@@ -102,10 +102,72 @@
       <h1> Score: 8000 </h2>
       </div>
       <div class = "plate">
-          <img src="{{url_for('static', filename='pancake.png')}}" alt="Image Description" width="300" height="200">
+          <img src="{{url_for('static', filename='pancake.png')}}" alt="Plate" width="300" height="200">
         </div>
     <div class = "robot">
-      <img src = "{{url_for('static', filename='happy_robot.png')}}" alt="Image Description" width="300" height="200">
+      <img src = "{{url_for('static', filename='happy_robot.png')}}" alt="Byter the Robot" width="300" height="200">
       </div>
+
+<script>
+
+    window.addEventListener("DOMContentLoaded", (e) => {
+
+      console.log("DOM fully loaded and parsed");
+      setTimeout(function () {
+          function myFunction() {
+          let text;
+          let person = prompt("Please enter your name:", "MasterChef");
+          while (person == null) {
+              person = prompt("Please enter your name:", "MasterChef");
+          }
+          text = "Congratulations " + person + "!";
+          console.log(text);
+          let formData = new FormData();
+
+          // Grab content from form
+          let name = person
+
+          // Populate form
+          formData.append("name", name);
+
+          fetch("/pancakes/serve", {
+              method: "POST",
+              body: formData
+          })
+          .then(function(response) {
+        // This right here is the response we will receive before we convert
+        // it over to readable JSON
+              console.log("Response turning to readable JSON", response);
+              return response.json();
+          })
+          .then(function(response) {
+        // Don't worry if this says "false", it just returns that when the user already exists from flasks end
+        // Once it reaches here, the async is already successful
+              console.log("Successful async: ", JSON.stringify(response));
+              if (JSON.stringify(response) != "false") {
+                  let tr = document.createElement("tr");
+                  let td1 = document.createElement("td");
+                  // let td2 = document.createElement("td");
+                  let userText = document.createTextNode(JSON.stringify(response));
+                  tr.appendChild(td1);
+                  td1.appendChild(userText);
+                  // tr.appendChild(td2);
+                  document.querySelector("#best").appendChild(tr);
+              }
+          })
+          .catch(function(error) {
+              console.log("Error in async", error);
+      });
+    };
+
+            myFunction()
+        }, 1000);
+
+    });
+
+
+    </script>
+
 </body>
+
 </html>
