@@ -61,6 +61,10 @@ def game2():
 def game3():
     return render_template("pan_game.html")
 
+@app.route("/mix_game")
+def game4():
+    return render_template("pan_mix.html")
+
 
 @app.route("/alfredo/home")
 def alfredo_home():
