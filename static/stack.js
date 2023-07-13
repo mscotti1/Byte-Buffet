@@ -41,6 +41,11 @@ let current_shape_index = null;
 let is_dragging = false;
 let startX;
 let startY;
+
+let stacked = 0;
+
+
+
 shapes.push({
   x: 200,
   y: 150,
@@ -156,8 +161,9 @@ let mouse_up = function (event) {
   }
   event.preventDefault();
   for (let shape of shapes) {
-    if (shape_in_shape(shape, cutting_list[breadKey])) {
+    if (shape.moveable && shape_in_shape(shape, cutting_list[breadKey])) {
       shape.moveable = false;
+      stacked++;
     }
   }
   is_dragging = false;
@@ -211,6 +217,10 @@ let draw_shapes = function () {
 
   for (let shape of shapes) {
     context.drawImage(shape.image, shape.x, shape.y, shape.width, shape.height);
+  }
+
+  if(stacked == 3) {
+    window.location.href = "pan_game.html"
   }
 };
 
