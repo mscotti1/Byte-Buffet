@@ -46,7 +46,7 @@ def insert_score(recipe):
         # score = request.form.get('score')
         scores = {
         "Name" : name,
-        "Score" : 8000
+        "Score" : 10000
         }
         with engine.connect() as connection:
             connection.execute(table_name.insert(), scores)
@@ -98,10 +98,6 @@ def game2():
 @app.route("/pan_game")
 def game3():
     return render_template("pan_game.html")
-
-@app.route("/mix_game")
-def game4():
-    return render_template("pan_mix.html")
 
 
 @app.route("/alfredo/home")
