@@ -89,6 +89,10 @@ def pancakes_chop():
 def squid_chop():
     return render_template("squid/chop.html")
 
+@app.route("/pancakes/serve")
+def panacakes_serve():
+    return render_template("pancakes/serve.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8000)
