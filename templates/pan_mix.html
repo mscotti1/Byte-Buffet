@@ -110,10 +110,19 @@
         image.onclick = function() {
           // Replace the image source
           const imageNumber = image.id.slice(-1); // Extract the number from the image ID
-          image.src = "{{url_for('static', filename='greencheck.jpg')}}";
+          image.src = "{{url_for('static', filename='greencheck2.png')}}";
         };
         });
-      }
+        // Get all the images with IDs starting with "i"
+        const wrongs = document.querySelectorAll("[id^='i']");
+        // Add onclick event to each image
+        wrongs.forEach(function(wrong) {
+        wrong.onclick = function() {
+          // Replace the image source
+          const imageNumber = wrong.id.slice(-1); // Extract the number from the image ID
+          wrong.src = "{{url_for('static', filename='wrong.jpg')}}";
+        };
+        });
   </script>
 </body>
 </html>
