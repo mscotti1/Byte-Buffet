@@ -227,20 +227,21 @@ let draw_shapes = function() {
     for (var key in cut_boxes) {
         var shape = cut_boxes[key]
         context.fillStyle = shape.color;
-        //console.log(shape)
         context.fillRect(shape.x, shape.y, shape.width, shape.height)
+    }
+
+    console.log(cut_boxes_size)
+    if(cut_boxes_size == 0) {
+        sliceNum++;
+        move_cutting_object(sliceNum);
+        cut_boxes_size = -1;
     }
 }
 
 let new_chop = function() {
-    console.log(cut_boxes_size);
-    if (cut_boxes_size == 0) {
-        sliceNum++;
-        move_cutting_object(sliceNum);
-    }
     generate_hit_boxes();
 }
 
 
 setInterval(draw_shapes,40);
-setInterval(new_chop,5000);
+setInterval(new_chop,3000);
