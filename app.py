@@ -46,7 +46,7 @@ def insert_score(recipe):
         # score = request.form.get('score')
         scores = {
         "Name" : name,
-        "Score" : 9000
+        "Score" : 10000
         }
         with engine.connect() as connection:
             connection.execute(table_name.insert(), scores)
@@ -55,7 +55,7 @@ def insert_score(recipe):
     # account for url when recipe is invalid
 
     with engine.connect() as connection:
-        query = db.select(table_name).order_by(table_name.c.Score.desc())
+        query = db.select(table_name).order_by(table_name.c.Score.desc()).limit(5)
         print("Q: ", query)
         query_result = connection.execute(query)
         rows = query_result.fetchall()
@@ -64,16 +64,11 @@ def insert_score(recipe):
     temp = f"{recipe}/serve.html"
     return render_template(temp, rows=rows)
 
-@app.route("/update_score", methods = ["GET"])
-def update_score():
-    score_dict = {
-    "Name" : "Bob",
-    "Score" : 0
-    }
-    with engine.connect() as connection:
-        connection.execute(score_table_squid.insert(), score_dict)
-        connection.commit()
-    return "make sure to change to POST"
+@app.route("/deleter")
+def deleter():
+    db.delete(score_table_pancakes)
+    return "Opps! Dropped the pancakes. T_T"
+
 
 @app.route("/")
 def home():
@@ -105,7 +100,7 @@ def alfredo_home():
     with engine.connect() as connection:
         # SELECT * FROM score_table
         # print(db.select(score_table).order_by(score_table.c.Score.desc()))
-        query = db.select(score_table_alfredo).order_by(score_table_alfredo.c.Score.desc())
+        query = db.select(score_table_alfredo).order_by(score_table_alfredo.c.Score.desc()).limit(5)
         print("Q: ", query)
         query_result = connection.execute(query)
         rows = query_result.fetchall()
@@ -118,7 +113,7 @@ def beef_home():
     with engine.connect() as connection:
         # SELECT * FROM score_table
         # print(db.select(score_table).order_by(score_table.c.Score.desc()))
-        query = db.select(score_table_beef).order_by(score_table_beef.c.Score.desc())
+        query = db.select(score_table_beef).order_by(score_table_beef.c.Score.desc()).limit(5)
         print("Q: ", query)
         query_result = connection.execute(query)
         rows = query_result.fetchall()
@@ -131,7 +126,7 @@ def cheese_home():
     with engine.connect() as connection:
         # SELECT * FROM score_table
         # print(db.select(score_table).order_by(score_table.c.Score.desc()))
-        query = db.select(score_table_cheese).order_by(score_table_cheese.c.Score.desc())
+        query = db.select(score_table_cheese).order_by(score_table_cheese.c.Score.desc()).limit(5)
         print("Q: ", query)
         query_result = connection.execute(query)
         rows = query_result.fetchall()
@@ -143,7 +138,7 @@ def pancakes_home():
     with engine.connect() as connection:
         # SELECT * FROM score_table
         # print(db.select(score_table).order_by(score_table.c.Score.desc()))
-        query = db.select(score_table_pancakes).order_by(score_table_pancakes.c.Score.desc())
+        query = db.select(score_table_pancakes).order_by(score_table_pancakes.c.Score.desc()).limit(5)
         print("Q: ", query)
         query_result = connection.execute(query)
         rows = query_result.fetchall()
@@ -156,7 +151,7 @@ def squid_home():
     with engine.connect() as connection:
         # SELECT * FROM score_table
         # print(db.select(score_table).order_by(score_table.c.Score.desc()))
-        query = db.select(score_table_squid).order_by(score_table_squid.c.Score.desc())
+        query = db.select(score_table_squid).order_by(score_table_squid.c.Score.desc()).limit(5)
         print("Q: ", query)
         query_result = connection.execute(query)
         rows = query_result.fetchall()

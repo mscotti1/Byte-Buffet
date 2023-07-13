@@ -145,22 +145,30 @@
         // Once it reaches here, the async is already successful
               console.log("Successful async: ", JSON.stringify(response));
               if (JSON.stringify(response) != "false") {
-                  let tr = document.createElement("tr");
-                  let td1 = document.createElement("td");
-                  let td2 = document.createElement("td");
-                  let userText = document.createTextNode(JSON.stringify(response));
                   console.log("RESPONSE", response);
                   let name = response["Name"];
-                  let userName = document.createTextNode(JSON.stringify(response));
                   let score = response["Score"];
-                  let userScore = document.createTextNode(JSON.stringify(response));
-                  console.log("NAME", name);
-                  console.log("SCORE", score);
-                  tr.appendChild(td1);
-                  td1.appendChild(name);
-                  // tr.appendChild(td2)
-                  // td2.appendChild(score);
-                  document.querySelector("#best").appendChild(tr);
+                  // document.querySelector("#best").appendChild(tr);
+                  let score_table = document.getElementById("best");
+                  let rows = score_table.rows
+                  for (let i = 0; i < rows.length-1; i++)
+                  {
+                      let prev = rows[i].getElementsByTagName("TD")[1];
+                      console.log("PREV: ", Number(prev.innerHTML));
+                      if (Number(prev.innerHTML) > score)
+                      {
+                          continue;
+                      }
+                      let new_row = score_table.insertRow(i);
+                      let c1 = new_row.insertCell(0);
+                      let c2 = new_row.insertCell(1);
+                      console.log("C1: ", c1);
+                      console.log("C2: ", c2);
+                      c1.innerHTML = name;
+                      c2.innerHTML = score;
+                      break;
+                  }
+
               }
           })
           .catch(function(error) {
