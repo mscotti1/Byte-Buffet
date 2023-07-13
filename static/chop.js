@@ -31,6 +31,10 @@ let startY;
 // shapes.push( {x:50, y:25, width:100, height:100, color: 'blue'})
 
 
+var Img = {};
+Img.pan = new Image();
+Img.pan.src = "../static/grilled.png";
+
 cut_boxes = {}
 cut_boxes_size = 0;
 
@@ -53,12 +57,12 @@ generate_hit_boxes = function() {
 
     
 
-    hit_box(997,300,400,25,25);
-    hit_box(996,300,425,25,25);
-    hit_box(995,300,450,25,25);
-    hit_box(994,300,475,25,25);
-    hit_box(993,300,500,25,25);
-    hit_box(992,300,525,25,25);
+    hit_box(997,350,200,25,25);
+    hit_box(996,350,225,25,25);
+    hit_box(995,350,250,25,25);
+    hit_box(994,350,275,25,25);
+    hit_box(993,350,300,25,25);
+    hit_box(992,350,325,25,25);
     
     cut_boxes_size = 6;
 
@@ -77,6 +81,7 @@ cutting_object = function(id,x,y,width,height) {
 		width:width,
 		height:height,
 		color:"grey",
+        image: Img.pan,
 	};
 
     cutting_list[id] = self;
@@ -91,7 +96,7 @@ move_cutting_object = function() {
 
 
 generate_cutting_object = function() {
-    cutting_object(990,200,450,150,50);
+    cutting_object(990,170,150,400,300);
 }
 
 generate_cutting_object();
@@ -220,8 +225,7 @@ let draw_shapes = function() {
     for (var key in cutting_list) {
         var shape = cutting_list[key]
         //console.log(shape)
-        context.fillStyle = shape.color;
-        context.fillRect(shape.x, shape.y, shape.width, shape.height)
+        context.drawImage(shape.image, shape.x, shape.y, shape.width, shape.height);
     }
 
     for (var key in cut_boxes) {
@@ -243,5 +247,13 @@ let new_chop = function() {
 }
 
 
-setInterval(draw_shapes,40);
+update = function() {
+    draw_shapes()
+    
+    if (sliceNum == 1) {
+        window.location.href = "/cheese/serve"
+    }
+}
+
+setInterval(update, 40)
 setInterval(new_chop,3000);

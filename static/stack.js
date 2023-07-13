@@ -220,7 +220,7 @@ let draw_shapes = function () {
   }
 
   if(stacked == 3) {
-    window.location.href = "pan_game.html"
+    window.location.href = "pan_game"
   }
 };
 
