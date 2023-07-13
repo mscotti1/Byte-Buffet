@@ -149,9 +149,12 @@
                   let td1 = document.createElement("td");
                   // let td2 = document.createElement("td");
                   let userText = document.createTextNode(JSON.stringify(response));
+                  let obj = JSON.parse(userText);
+                  obj.name = obj["Name"];
+                  obj.score = obj["Score"];
                   tr.appendChild(td1);
-                  td1.appendChild(userText);
-                  // tr.appendChild(td2);
+                  td1.appendChild(obj.name);
+                  // tr.appendChild(obj.score);
                   document.querySelector("#best").appendChild(tr);
               }
           })
