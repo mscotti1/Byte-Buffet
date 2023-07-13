@@ -191,6 +191,23 @@ def squid_chop():
 @app.route("/pancakes/mix")
 def pancakes_mix():
     return render_template("pancakes/mix.html")
+
+@app.route("/squid/mix")
+def squid_mix():
+    return render_template("squid/mix.html")
+
+@app.route("/beef/mix")
+def beef_mix():
+    return render_template("beef/mix.html")
+
+@app.route("/alfredo/mix")
+def alfredo_mix():
+    return render_template("alfredo/mix.html")
+
+@app.route("/cheese/mix")
+def cheese_mix():
+    return render_template("cheese/mix.html")
+
 # @app.route("/pancakes/serve")
 # def panacakes_serve():
 #     with engine.connect() as connection:
