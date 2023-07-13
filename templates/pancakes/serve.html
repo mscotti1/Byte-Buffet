@@ -147,14 +147,19 @@
               if (JSON.stringify(response) != "false") {
                   let tr = document.createElement("tr");
                   let td1 = document.createElement("td");
-                  // let td2 = document.createElement("td");
+                  let td2 = document.createElement("td");
                   let userText = document.createTextNode(JSON.stringify(response));
-                  let obj = JSON.parse(userText);
-                  obj.name = obj["Name"];
-                  obj.score = obj["Score"];
+                  console.log("RESPONSE", response);
+                  let name = response["Name"];
+                  let userName = document.createTextNode(JSON.stringify(response));
+                  let score = response["Score"];
+                  let userScore = document.createTextNode(JSON.stringify(response));
+                  console.log("NAME", name);
+                  console.log("SCORE", score);
                   tr.appendChild(td1);
-                  td1.appendChild(obj.name);
-                  tr.appendChild(obj.score);
+                  td1.appendChild(name);
+                  // tr.appendChild(td2)
+                  // td2.appendChild(score);
                   document.querySelector("#best").appendChild(tr);
               }
           })

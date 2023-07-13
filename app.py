@@ -46,7 +46,7 @@ def insert_score(recipe):
         # score = request.form.get('score')
         scores = {
         "Name" : name,
-        "Score" : 10000
+        "Score" : 9000
         }
         with engine.connect() as connection:
             connection.execute(table_name.insert(), scores)
