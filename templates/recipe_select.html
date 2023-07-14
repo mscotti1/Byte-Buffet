@@ -155,13 +155,6 @@
         const gameMusic = document.getElementById("gameMusic");
         let playbackPosition = 0;
 
-        // Check if there is a stored playback position in local storage
-        if (localStorage.getItem("playbackPosition")) {
-          playbackPosition = parseFloat(
-            localStorage.getItem("playbackPosition")
-          );
-        }
-
         // Set the playback position of the audio
         gameMusic.currentTime = playbackPosition;
 
