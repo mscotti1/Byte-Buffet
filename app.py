@@ -200,6 +200,10 @@ def beef_mix():
 def alfredo_mix():
     return render_template("alfredo/mix.html")
 
+@app.route("/pancakes/stove")
+def pancakes_stove():
+    return render_template("pancakes/stove.html")
+
 @app.route("/cheese/mix")
 def cheese_mix():
     return render_template("cheese/mix.html")
