@@ -30,9 +30,7 @@ var Img = {};
 Img.pan = new Image();
 Img.pan.src = "../static/pan.png";
 Img.butter = new Image();
-Img.butter.src = "../static/butter.jpg";
-Img.uncooked_cheese = new Image();
-Img.uncooked_cheese.src = "../static/uncooked_cheese.jpg";
+Img.butter.src = "../static/baterr.png";
 
 
 context.drawImage(Img.butter, 0, 0);
@@ -48,7 +46,7 @@ let stacked = 0;
 
 
 shapes.push({
-  x: 200,
+  x: 100,
   y: 350,
   width: 200,
   height: 200,
@@ -58,14 +56,25 @@ shapes.push({
 });
 
 shapes.push({
+    x: 250,
+    y: 350,
+    width: 200,
+    height: 200,
+    color: "red",
+    image: Img.butter,
+    moveable: true,
+  });
+
+  shapes.push({
     x: 400,
     y: 350,
     width: 200,
     height: 200,
     color: "red",
-    image: Img.uncooked_cheese,
+    image: Img.butter,
     moveable: true,
   });
+
 
 
 
@@ -214,8 +223,8 @@ let draw_shapes = function () {
     context.drawImage(shape.image, shape.x, shape.y, shape.width, shape.height);
   }
 
-  if(stacked == 2) {
-    window.location.href = "/pancakes/serve"
+  if(stacked == 3) {
+    window.location.href = "/pancakes/stack"
   }
 };
 

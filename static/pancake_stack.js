@@ -28,13 +28,13 @@ window.onresize = function () {
 
 var Img = {};
 Img.bread = new Image();
-Img.bread.src = "../static/bread.jpg";
+Img.bread.src = "../static/plate.png";
 Img.american = new Image();
-Img.american.src = "../static/american.jpg";
+Img.american.src = "../static/stacking_pancake.jpg";
 Img.pepperjack = new Image();
-Img.pepperjack.src = "../static/pepperjack.jpg";
+Img.pepperjack.src = "../static/syrup.png";
 Img.provolone = new Image();
-Img.provolone.src = "../static/provolone.jpg";
+Img.provolone.src = "../static/butter.jpg";
 
 let shapes = [];
 let current_shape_index = null;
@@ -56,7 +56,25 @@ shapes.push({
   moveable: true,
 });
 shapes.push({
-  x: 50,
+    x: 50,
+    y: 150,
+    width: 150,
+    height: 150,
+    color: "red",
+    image: Img.american,
+    moveable: true,
+  });
+  shapes.push({
+    x: 50,
+    y: 250,
+    width: 150,
+    height: 150,
+    color: "red",
+    image: Img.american,
+    moveable: true,
+  });
+shapes.push({
+  x: 550,
   y: 150,
   width: 150,
   height: 150,
@@ -65,23 +83,14 @@ shapes.push({
   moveable: true,
 });
 shapes.push({
-  x: 50,
-  y: 250,
+  x: 550,
+  y: 300,
   width: 150,
   height: 150,
   color: "red",
   image: Img.provolone,
   moveable: true,
 });
-shapes.push({
-    x: 400,
-    y: 150,
-    width: 200,
-    height: 200,
-    color: "red",
-    image: Img.bread,
-    moveable: true,
-  });
 
 
 cutting_list = {};
@@ -109,7 +118,7 @@ move_cutting_object = function () {
 };
 
 generate_cutting_object = function () {
-  cutting_object(breadKey, 200, 150, 200, 200);
+  cutting_object(breadKey, 250, 150, 200, 200);
 };
 
 generate_cutting_object();
@@ -229,8 +238,8 @@ let draw_shapes = function () {
     context.drawImage(shape.image, shape.x, shape.y, shape.width, shape.height);
   }
 
-  if(stacked == 4) {
-    window.location.href = "/cheese/serve"
+  if(stacked == 5) {
+    window.location.href = "/pancakes/serve"
   }
 };
 
