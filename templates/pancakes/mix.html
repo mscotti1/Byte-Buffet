@@ -12,6 +12,7 @@
   <img src="{{url_for('static', filename='pasta.jpg')}}" alt="Incorrect 8" class="circle-image circle8" id="i4">
 </div>
 <script>
+      let correct_num = 0;
       // Get all the images with IDs starting with "c"
       const images = document.querySelectorAll("[id^='c']");
       // Add onclick event to each image
@@ -20,6 +21,10 @@
         // Replace the image source
         const imageNumber = image.id.slice(-1); // Extract the number from the image ID
         image.src = "{{url_for('static', filename='greencheck2.png')}}";
+        correct_num++;
+        if (correct_num == 4) {
+        window.location.href = "/pancakes/pan"
+      }
       };
       });
       // Get all the images with IDs starting with "i"

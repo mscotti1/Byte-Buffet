@@ -31,8 +31,8 @@ Img.pan = new Image();
 Img.pan.src = "../static/pan.png";
 Img.butter = new Image();
 Img.butter.src = "../static/butter.jpg";
-Img.raw_chicken = new Image();
-Img.raw_chicken.src = "../static/raw_chicken.jpg";
+Img.uncooked_cheese = new Image();
+Img.uncooked_cheese.src = "../static/uncooked_cheese.jpg";
 
 
 context.drawImage(Img.butter, 0, 0);
@@ -63,7 +63,7 @@ shapes.push({
     width: 200,
     height: 200,
     color: "red",
-    image: Img.raw_chicken,
+    image: Img.uncooked_cheese,
     moveable: true,
   });
 
