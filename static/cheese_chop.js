@@ -1,3 +1,6 @@
+// import global_score from "tracking.js";
+// console.log("GS: ",global_score);
+
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 
