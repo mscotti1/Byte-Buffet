@@ -44,9 +44,23 @@
         </audio>
         <script>
           window.addEventListener('load', function() {
-          var audio = document.getElementById('gameMusic');
-          audio.play();
-          audio.volume = 0.10;
-        });
+          const gameMusic = document.getElementById("gameMusic");
+          let playbackPosition = 0;
+
+          // Check if there is a stored playback position in local storage
+          if (localStorage.getItem("playbackPosition")) {
+            playbackPosition = parseFloat(localStorage.getItem("playbackPosition"));
+          }
+
+          // Set the playback position of the audio
+          gameMusic.currentTime = playbackPosition;
+
+          // Update the playback position in local storage whenever the audio time changes
+          gameMusic.addEventListener("timeupdate", function() {
+            playbackPosition = gameMusic.currentTime;
+            localStorage.setItem("playbackPosition", playbackPosition);
+          });
+        gameMusic.volume = 0.10;
+      });
         </script>
 {% endblock content %}
