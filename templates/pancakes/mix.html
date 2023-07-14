@@ -1,5 +1,8 @@
 {% extends "mix_template.html" %}
 {% block content %}
+<audio id="gameMusic" controls autoplay hidden src="../../static/festival.mp3">
+</audio>
+
 <div class="circle-container">
   <img src="{{url_for('static', filename='mixing_bowl.jpg')}}" alt="Mixing Bowl" class="center-image">
   <img src="{{url_for('static', filename='flour.png')}}" alt="Correct 1" class="circle-image circle1" id="c1">
@@ -12,6 +15,10 @@
   <img src="{{url_for('static', filename='pasta.jpg')}}" alt="Incorrect 8" class="circle-image circle8" id="i4">
 </div>
 <script>
+      window.addEventListener('load', function() {
+      var audio = document.getElementById('gameMusic');
+      audio.play();
+    });
       let correct_num = 0;
       // Get all the images with IDs starting with "c"
       const images = document.querySelectorAll("[id^='c']");

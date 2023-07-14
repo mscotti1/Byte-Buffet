@@ -43,4 +43,12 @@
         Stove Time!
     </button>
 </a>
+<audio id="gameMusic" controls autoplay hidden src="../../static/festival.mp3">
+</audio>
+<script>
+  window.addEventListener('load', function() {
+  var audio = document.getElementById('gameMusic');
+  audio.play();
+});
+</script>
 {% endblock content %}

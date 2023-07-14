@@ -238,7 +238,7 @@ let draw_shapes = function() {
     console.log(cut_boxes_size)
     if(cut_boxes_size == 0) {
         sliceNum++;
-        move_cutting_object(sliceNum);
+        //move_cutting_object(sliceNum);
         cut_boxes_size = -1;
     }
 }

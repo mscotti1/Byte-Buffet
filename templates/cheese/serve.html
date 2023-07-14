@@ -107,6 +107,14 @@
     <div class = "robot">
       <img src = "{{url_for('static', filename='happy_robot.png')}}" alt="Byter the Robot" width="300" height="200">
       </div>
+      <audio id="gameMusic" controls autoplay hidden src="../../static/festival.mp3">
+    </audio>
+    <script>
+      window.addEventListener('load', function() {
+      var audio = document.getElementById('gameMusic');
+      audio.play();
+    });
+    </script>
 
 <script>
 

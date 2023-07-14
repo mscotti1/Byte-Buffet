@@ -104,6 +104,14 @@
 console.log("GS: ", global_score); </script>
     <script src="../static/cheese_stack.js"></script>
   </body>
+  <audio id="gameMusic" controls autoplay hidden src="../../static/festival.mp3">
+  </audio>
+  <script>
+    window.addEventListener('load', function() {
+    var audio = document.getElementById('gameMusic');
+    audio.play();
+  });
+  </script>
 </html>
 
 <!-- <div class="container">
