@@ -49,19 +49,19 @@ let stacked = 0;
 
 shapes.push({
   x: 200,
-  y: 150,
-  width: 100,
-  height: 100,
+  y: 350,
+  width: 200,
+  height: 200,
   color: "red",
   image: Img.butter,
   moveable: true,
 });
 
 shapes.push({
-    x: 200,
-    y: 250,
-    width: 100,
-    height: 100,
+    x: 400,
+    y: 350,
+    width: 200,
+    height: 200,
     color: "red",
     image: Img.raw_chicken,
     moveable: true,
@@ -94,7 +94,7 @@ move_cutting_object = function () {
 };
 
 generate_cutting_object = function () {
-  cutting_object(breadKey, 400, 325, 200, 200);
+  cutting_object(breadKey, 370, 0, 300, 300);
 };
 
 generate_cutting_object();
