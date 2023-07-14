@@ -230,7 +230,7 @@ let draw_shapes = function () {
   }
 
   if(stacked == 4) {
-    window.location.href = "pan_game"
+    window.location.href = "../cheese/pan"
   }
 };
 

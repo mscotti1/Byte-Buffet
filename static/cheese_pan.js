@@ -215,7 +215,7 @@ let draw_shapes = function () {
   }
 
   if(stacked == 2) {
-    window.location.href = "chop_game"
+    window.location.href = "../cheese/chop"
   }
 };
 

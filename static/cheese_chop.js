@@ -53,7 +53,7 @@ hit_box = function(id,x,y,width,height) {
 
 generate_hit_boxes = function() {
 
-    
+
 
     hit_box(997,350,200,25,25);
     hit_box(996,350,225,25,25);
@@ -61,7 +61,7 @@ generate_hit_boxes = function() {
     hit_box(994,350,275,25,25);
     hit_box(993,350,300,25,25);
     hit_box(992,350,325,25,25);
-    
+
     cut_boxes_size = 6;
 
 }
@@ -247,7 +247,7 @@ let new_chop = function() {
 
 update = function() {
     draw_shapes()
-    
+
     if (sliceNum == 1) {
         window.location.href = "/cheese/serve"
     }
