@@ -1,10 +1,8 @@
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 
-canvas.width = window.innerWidth - 30;
-canvas.height = window.innerHeight - 10;
-
-canvas.style.border = "5px solid red";
+canvas.width = 750;
+canvas.height = 500;
 
 let canvas_width = canvas.width;
 let canvas_height = canvas.height;
@@ -31,10 +29,12 @@ window.onresize = function () {
 var Img = {};
 Img.bread = new Image();
 Img.bread.src = "../static/bread.jpg";
-Img.cheese = new Image();
-Img.cheese.src = "../static/pepperjack.jpg";
-
-context.drawImage(Img.cheese, 0, 0);
+Img.american = new Image();
+Img.american.src = "../static/american.jpg";
+Img.pepperjack = new Image();
+Img.pepperjack.src = "../static/pepperjack.jpg";
+Img.provolone = new Image();
+Img.provolone.src = "../static/provolone.jpg";
 
 let shapes = [];
 let current_shape_index = null;
@@ -47,32 +47,42 @@ let stacked = 0;
 
 
 shapes.push({
-  x: 200,
+  x: 50,
+  y: 50,
+  width: 150,
+  height: 150,
+  color: "red",
+  image: Img.american,
+  moveable: true,
+});
+shapes.push({
+  x: 50,
   y: 150,
-  width: 100,
-  height: 100,
-  color: "red",
-  image: Img.cheese,
-  moveable: true,
-});
-shapes.push({
-  x: 200,
-  y: 300,
-  width: 100,
-  height: 100,
+  width: 150,
+  height: 150,
   color: "blue",
-  image: Img.cheese,
+  image: Img.pepperjack,
   moveable: true,
 });
 shapes.push({
-  x: 200,
-  y: 450,
-  width: 100,
-  height: 100,
+  x: 50,
+  y: 250,
+  width: 150,
+  height: 150,
   color: "red",
-  image: Img.cheese,
+  image: Img.provolone,
   moveable: true,
 });
+shapes.push({
+    x: 400,
+    y: 150,
+    width: 200,
+    height: 200,
+    color: "red",
+    image: Img.bread,
+    moveable: true,
+  });
+
 
 cutting_list = {};
 sliceNum = 0;
@@ -99,7 +109,7 @@ move_cutting_object = function () {
 };
 
 generate_cutting_object = function () {
-  cutting_object(breadKey, 400, 325, 200, 200);
+  cutting_object(breadKey, 200, 150, 200, 200);
 };
 
 generate_cutting_object();
@@ -219,7 +229,7 @@ let draw_shapes = function () {
     context.drawImage(shape.image, shape.x, shape.y, shape.width, shape.height);
   }
 
-  if(stacked == 3) {
+  if(stacked == 4) {
     window.location.href = "pan_game"
   }
 };

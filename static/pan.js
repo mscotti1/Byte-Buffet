@@ -1,10 +1,8 @@
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 
-canvas.width = window.innerWidth - 30;
-canvas.height = window.innerHeight - 10;
-
-canvas.style.border = "5px solid red";
+canvas.width = 750;
+canvas.height = 500;
 
 let canvas_width = canvas.width;
 let canvas_height = canvas.height;
