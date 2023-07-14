@@ -179,6 +179,10 @@ def pancakes_chop():
 def pancakes_pan():
     return render_template("pancake_pan.html")
 
+@app.route("/pancakes/stack")
+def pancakes_stack():
+    return render_template("pancake_stack.html")
+
 @app.route("/squid/chop")
 def squid_chop():
     return render_template("squid/chop.html")
