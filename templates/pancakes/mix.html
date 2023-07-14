@@ -2,6 +2,31 @@
 {% block content %}
 <audio id="gameMusic" controls autoplay hidden src="../../static/festival.mp3">
 </audio>
+<html>
+<head>
+  <style>
+    .box {
+      width: 300px;
+      height: 100px;
+      background-color: pink;
+      border: 2px solid black;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 100px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">Mix Dry Ingredients</div>
+</body>
 
 <div class="circle-container">
   <img src="{{url_for('static', filename='mixing_bowl.jpg')}}" alt="Mixing Bowl" class="center-image">
