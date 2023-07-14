@@ -69,6 +69,11 @@
         text-shadow: -2px -2px 0 #4d4d4d, 2px -2px 0 #4d4d4d, -2px 2px 0 #4d4d4d,
           2px 2px 0 #4d4d4d;
       }
+
+      #Byter {
+  background-color: #faf0d7; /* Replace with your desired background color */
+      }   
+
     </style>
   </head>
   <body>
@@ -91,7 +96,6 @@
                 width="300"
                 height="200"
               />
-              <p>recipe desc</p>
             </a>
             <a href="./{{url_for('cheese_home')}}" class="level">
               <h3>Grilled Cheese</h3>
@@ -101,7 +105,6 @@
                 width="300"
                 height="200"
               />
-              <p>recipe desc</p>
             </a>
             <a href="./{{url_for('squid_home')}}" class="level">
               <h3>Fried Calamari</h3>
@@ -111,7 +114,6 @@
                 width="300"
                 height="200"
               />
-              <p>recipe desc</p>
             </a>
           </div>
         </div>
@@ -127,7 +129,15 @@
                 width="300"
                 height="200"
               />
-              <p>recipe desc</p>
+            </a>
+            <a href="" class="level" id="Byter">
+              <h3>Chef Byter</h3>
+              <img
+                src="{{url_for('static', filename='happy_robot.png')}}"
+                alt="Image Description"
+                width="250"
+                height="200"
+              />
             </a>
             <a href="./{{url_for('beef_home')}}" class="level">
               <h3>Beef Stir Fry</h3>
@@ -137,7 +147,6 @@
                 width="300"
                 height="200"
               />
-              <p>recipe desc</p>
             </a>
           </div>
         </div>
