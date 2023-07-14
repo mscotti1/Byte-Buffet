@@ -205,5 +205,18 @@ def cheese_mix():
     return render_template("cheese/mix.html")
 
 
+@app.route("/cheese/stack")
+def cheese_stack():
+    return render_template("cheese/stack.html")
+
+@app.route("/cheese/stove")
+def cheese_stove():
+    return render_template("cheese/stove.html")
+
+@app.route("/cheese/pan")
+def cheese_pan():
+    return render_template("cheese/pan.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port = 8000)
