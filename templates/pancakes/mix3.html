@@ -1,0 +1,46 @@
+{% extends "mix_template.html" %}
+{% block content %}
+<div class="circle-container">
+  <img src="{{url_for('static', filename='mixing_bowl.jpg')}}" alt="Mixing Bowl" class="center-image">
+  <!-- <img src="{{url_for('static', filename='flour.png')}}" alt="Correct 1" class="circle-image circle1" id="c1">
+  <img src="{{url_for('static', filename='sugar.png')}}" alt="Correct 2" class="circle-image circle2" id="c2">
+  <img src="{{url_for('static', filename='baking-powder.png')}}" alt="Correct 3" class="circle-image circle3" id="c3">
+  <img src="{{url_for('static', filename='salt.jpg')}}" alt="Correct 4" class="circle-image circle4" id="c4">
+  <img src="{{url_for('static', filename='bread.jpg')}}" alt="Incorrect 5" class="circle-image circle5" id="i1">
+  <img src="{{url_for('static', filename='garlic.png')}}" alt="Incorrect 6" class="circle-image circle6" id="i2"> -->
+  <img src="{{url_for('static', filename='mixing_bowl.jpg')}}" alt="Incorrect 7" class="circle-image circle7" id="c3">
+  <img src="{{url_for('static', filename='mixing_bowl.jpg')}}" alt="Incorrect 8" class="circle-image circle8" id="c4">
+</div>
+<script>
+      let correct_num = 0;
+      // Get all the images with IDs starting with "c"
+      const images = document.querySelectorAll("[id^='c']");
+      // Add onclick event to each image
+      images.forEach(function(image) {
+      image.onclick = function() {
+        // Replace the image source
+        const imageNumber = image.id.slice(-1); // Extract the number from the image ID
+        image.src = "{{url_for('static', filename='greencheck2.png')}}";
+        correct_num++;
+        if (correct_num == 2) {
+        window.location.href = "/pancakes/pan"
+      }
+      };
+      });
+      // Get all the images with IDs starting with "i"
+      const wrongs = document.querySelectorAll("[id^='i']");
+      // Add onclick event to each image
+      wrongs.forEach(function(wrong) {
+      wrong.onclick = function() {
+        // Replace the image source
+        const imageNumber = wrong.id.slice(-1); // Extract the number from the image ID
+        wrong.src = "{{url_for('static', filename='wrong.jpg')}}";
+      };
+      });
+</script>
+<a href="/pancakes/stove">
+    <button class="block">
+        Stove Time!
+    </button>
+</a>
+{% endblock content %}
