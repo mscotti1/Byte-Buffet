@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Byte Buffet: Pancakes </title>
+    <title> Byte Buffet: Cheese </title>
   <style>
     body {
       background-color: #8CC0DE;
@@ -102,7 +102,7 @@
       <h1> Score: 8000 </h2>
       </div>
       <div class = "plate">
-          <img src="{{url_for('static', filename='pancake.png')}}" alt="Plate" width="300" height="200">
+          <img src="{{url_for('static', filename=' grilled_cheeseee.jpg')}}" alt="Plate" width="300" height="200">
         </div>
     <div class = "robot">
       <img src = "{{url_for('static', filename='happy_robot.png')}}" alt="Byter the Robot" width="300" height="200">
@@ -130,7 +130,7 @@
           // Populate form
           formData.append("name", name);
 
-          fetch("/pancakes/serve", {
+          fetch("/cheese/serve", {
               method: "POST",
               body: formData
           })
